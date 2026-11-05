@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UpLoader",
-  description: "Just Upload and Download your photo safely!!",
+  title: "UpLoader - Upload and Download your photo safely!!",
+  description: "UpLoader is a secure and user-friendly platform for uploading and downloading your photos. With our service, you can easily share your images with friends and family while ensuring that your data remains private and protected.",
 };
 
 export default function RootLayout({
