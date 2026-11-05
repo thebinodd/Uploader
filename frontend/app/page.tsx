@@ -212,6 +212,16 @@ export default function Home() {
     }
   }
 
+  const copyURL = () => {
+    if (ID) {
+      const url = `${process.env.NEXT_PUBLIC_CLOUDINARY_URL}${ID}.${Ext}`;
+      navigator.clipboard.writeText(url);
+      notifySuccess("Image URL Copied to Clipboard!")
+    } else {
+      notifyError("No Image URL to Copy!")
+    }
+  }
+
   return (
     <div className=" w-[99vw] bg-white h-screen flex  items-center flex-col lg:gap-5 gap-4 ">
       <div>
@@ -324,7 +334,13 @@ export default function Home() {
 
       {
         ID && <div className="">
-          <h1 className="text-black font-semibold flex flex-col gap-2 justify-center items-center tracking-wider">Use The Code <span className="font-bold tracking-widest text-sm bg-neutral-800 text-white px-10 py-2">{`${ID}`}</span><span className="text-black font-semibold text-xs flex flex-col justify-center items-center tracking-wider">to download this Image</span></h1><button onClick={() => copyCode()} className="bg-[#F9FAFB] lg:w-[20vw] mt-5 md:w-[20vw] w-[30vw] text-xs text-center hover:bg-green-300 border-green-500 py-2 cursor-pointer border-2 rounded-sm  text-slate-500">Copy Code</button>
+          <h1 className="text-black font-semibold flex flex-col gap-2 justify-center items-center tracking-wider">Use The Code <span className="font-bold tracking-widest text-sm bg-neutral-800 text-white px-10 py-2">{`${ID}`}</span><span className="text-black font-semibold text-xs flex flex-col justify-center items-center tracking-wider">to download this Image</span></h1>
+          <div className="buttons flex flex-row w-[30vw] gap-2">
+            <button onClick={() => copyCode()} className="bg-[#F9FAFB] lg:w-[20vw] mt-5 md:w-[20vw] w-[15vw] text-xs text-center hover:bg-green-300 border-green-500 py-2 cursor-pointer border-2 rounded-sm  text-slate-500">Copy Code</button>
+
+            <button onClick={() => copyURL()} className="bg-[#F9FAFB] lg:w-[20vw] mt-5 md:w-[20vw] w-[15vw] text-xs text-center hover:bg-green-300 border-green-500 py-2 cursor-pointer border-2 rounded-sm  text-slate-500">Copy Image URL</button>
+          </div>
+
         </div>
       }
 
